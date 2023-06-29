@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import= "java.util.*" %>
+<%@ page import= "java.text.*" %>
+<%
+/* 	Date today = new Date();
+	SimpleDateFormat sm = new SimpleDateFormat("yyyy년 MM월 dd일 HH:mm:ss");
+	SimpleDateFormat sm2 = new SimpleDateFormat("E요일");
+	String nowdate = sm.format(today);	
+	String nowday = sm2.format(today);	
+	System.out.println(nowdate);
+	System.out.println(nowday); */
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+	<link href="../css/inpay.css" rel="stylesheet">
+<script>
+	function More_information(){
+		var url = "more_infomation.jsp";
+        var name = "상세정보";
+        var option = "width = 600, height = 1200, top = 100, left = 200, location = no"
+        	window.open(url, name, option);
+	}
+</script>
+<body>
+	<header>
+		<table>
+			<tr>
+				<td>EZEN</td>
+				<td>주차장 요금정보</td>	
+				<td><img src="../img/menu.png"></td>
+			</tr>
+		</table>
+	</header>
+	
+	<table id="main">
+		<tr>
+			<td id="title">
+				<p>주차장 명세서</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="main_tbl" border="2">
+					<tr>
+						<th>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<%
+							for(int i=1; i<=10; i++){
+							%>
+							<table id="menu_tbl" onclick="More_information()">
+								<tr>
+									<td id="car_num">
+										13가 1823
+									</td>
+									<td rowspan="2">
+										<img src="../img/right_math.png">
+									</td>
+								</tr>
+								<tr>
+									<td id="car_time">
+										2016-11-17 11:11:11
+									</td>
+								</tr>
+							</table>
+							<%
+							}
+							%>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>	
+	</table>
+	<footer>
+			<table id="footer_button">
+				<tr>
+					<td><img src="../img/left.jpg"></td>
+					<td><img src="../img/middle.jpg"></td>
+					<td><img src="../img/right.jpg"></td>
+				</tr>
+			</table>
+		</footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import= "java.util.*" %>
+<%@ page import= "java.text.*" %>
+<%@ page import="car_manager_vo.*" %>
+<%@ page import="car_manager_dto.*" %>
+<%
+String move_car = request.getParameter("move_car");
+String move_time = request.getParameter("move_time"); 
+%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<link href="../css/more_infomation.css" rel="stylesheet">
+</head>
+<script>
+	function payment(){
+		alert("결제가 완료되었습니다.");
+		self.close() 
+	}
+</script>
+<body>
+	<table id="main_tbl">
+		<tr>
+			<td id="title">
+				주차차량 요금정보
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="../img/car1.jpg">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="info_tbl">
+					<tr>
+						<td>
+							차량번호
+						</td>
+						<td>
+							<%= move_car %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							입차시간
+						</td>
+						<td>
+							<%= move_time %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							주차시간
+						</td>
+						<td>
+							0일 12시 11분
+						</td>
+					</tr>
+					<tr>
+						<td>
+							결제금액
+						</td>
+						<td>
+							13,000 원
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="input_tbl">
+					<tr>
+						<td style="cursor:pointer;">
+							<input type="button" value="결제" onclick="payment();">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="처음으로" onclick="javascript:self.close();">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

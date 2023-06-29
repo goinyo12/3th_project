@@ -1,0 +1,33 @@
+package car_manager_dao;
+
+import java.util.Map;
+import java.io.*;
+
+public class pythonbrowse {
+	public String test(){
+		String outBuffer = "";
+		//중요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//파이썬 가상 환경 경로 설정
+			String RunPath = "C:\\Users\\MYCOM\\.conda\\envs\\project\\";
+		//파이썬 실행파일 설정
+			String command = RunPath + "pythonw.exe";
+		//파이썬 코드 파일 설정
+			String pyname  = "E:\\SHS\\third_project\\python\\test\\pororoOCR\\plate_db.py";
+		// ==========================================================================================================
+		try
+		{
+	        ProcessBuilder builder = new ProcessBuilder();
+	        builder.command(command, pyname);
+			Map<String, String> envs = builder.environment();
+		    envs.put("Path", RunPath + "Scripts");
+		    envs.put("Path", RunPath + "Library\\bin");
+		    int exitVal = 0;
+    		Process process = builder.start();
+		    System.out.println("OK");
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return outBuffer;
+	}
+}

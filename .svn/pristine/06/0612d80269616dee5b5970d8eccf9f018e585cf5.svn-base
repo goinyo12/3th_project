@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<%@ page import= "java.util.*" %>
+<%@ page import= "java.text.*" %>
+<%@ page import="car_manager_vo.*" %>
+<%@ page import="car_manager_dto.*" %>
+<%
+	String park_no  = request.getParameter("park_no");
+	String park_car = request.getParameter("park_car");
+	
+	parkDTO dto = new parkDTO();
+	
+	
+	
+%>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<b><%= park_no %></b>
+<b><%= park_car %></b>
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+package car_manager_dto;
+import car_manager_vo.*;
+import car_manager_dao.*;
+import java.util.*;
+
+public class photoDTO extends DBManager
+{
+	//사진찍힌 번호판의 회원정보,입출차 정보를 불러온다
+	public photoVO Read(String user_car)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+
+		sql  = "select photo_fname,photo_pname,move_no,user_no ";
+		sql += "from photo where no = " + user_car;
+		this.RunQuery(sql);
+		if( this.GetNext() == false)
+		{
+			//해당 게시물 없음.
+			this.DBClose();
+			return null;
+		}
+		photoVO vo = new photoVO();
+		vo.setPhoto_no(user_car);
+		vo.setPhoto_fname(this.GetValue("photo_fname"));
+		vo.setPhoto_pname(this.GetValue("photo_pname"));
+		vo.setMove_no(this.GetValue("move_no"));
+		vo.setUser_no(this.GetValue("user_no"));
+		
+		this.DBClose();
+		return vo;
+	}
+}

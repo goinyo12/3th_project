@@ -1,0 +1,80 @@
+package car_manager_dto;
+
+import car_manager_vo.*;
+import car_manager_dao.*;
+import java.util.*;
+
+public class moveDTO extends DBManager
+{
+	public moveVO Read(String no)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		
+		sql  = "select move_no,move_time,move_inout,user_no,move_car ";
+		sql += "from move where move_no = " + no;
+		this.RunQuery(sql);
+		if( this.GetNext() == false)
+		{
+			//해당 게시물 없음.
+			this.DBClose();
+			return null;
+		}
+		moveVO vo = new moveVO();
+		vo.setMove_no(no);
+		vo.setMove_car(vo.getMove_car());
+		vo.setMove_inout(vo.getMove_inout());
+		vo.setMove_time(vo.getMove_time());
+		vo.setUser_no(vo.getUser_no());
+		
+		this.DBClose();
+		return vo;
+	}
+	
+	public boolean Insert(moveVO vo)
+	{
+		String sql = "";
+		
+		this.DBOpen();
+		
+		sql  = "insert into move ";
+		sql += "(move_car,move_inout,user_no) ";
+		sql += "values (";
+		sql += "'" + vo.getMove_car() + "',";
+		sql += "'" + vo.getMove_inout() + "',";
+		sql += "'" + vo.getUser_no() + "')";
+		this.RunCommand(sql);
+		
+		this.DBClose();
+		
+ 		return true;
+	}
+	
+	public boolean Delete(String no)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		sql = "delete from move where move_no=" + no;
+		this.RunCommand(sql);
+		
+		return true;
+	}
+	
+	public boolean Update(moveVO vo)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		sql  = "update move set ";
+		sql += "move_car='" + _R(vo.getMove_car()) + "',";
+		sql += "move_inout='" + _R(vo.getMove_inout()) + "' ";
+		sql += "where move_no=" + vo.getMove_no();
+		
+		this.RunCommand(sql);
+		this.DBClose();
+		
+		return true;
+	}
+}

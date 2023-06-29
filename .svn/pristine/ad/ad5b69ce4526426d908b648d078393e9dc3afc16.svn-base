@@ -1,0 +1,164 @@
+package car_manager_dto;
+
+import car_manager_vo.*;
+import car_manager_dao.*;
+import java.util.*;
+
+public class moveDTO extends DBManager
+{
+	public moveVO Read(String move_car)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		
+		sql  = "select move_no,move_time,move_inout,user_no,move_car ";
+		sql += "from move where move_car = " + move_car;
+		this.RunQuery(sql);
+		System.out.println(sql);
+		if( this.GetNext() == false)
+		{
+			//해당 게시물 없음.
+			this.DBClose();
+			return null;
+		}
+		moveVO vo = new moveVO();
+		vo.setMove_car(move_car);
+		vo.setMove_no(vo.getMove_no());
+		vo.setMove_inout(vo.getMove_inout());
+		vo.setMove_time(vo.getMove_time());
+		vo.setUser_no(vo.getUser_no());
+		
+		this.DBClose();
+		return vo;
+	}
+	
+	//입차시 최신순
+	public moveVO in_Read()
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		
+		sql = "select * from move where move_inout = 'in' order by move_no desc limit 1 ";
+		this.RunQuery(sql);
+		System.out.println(sql);
+		if( this.GetNext() == false)
+		{
+			//해당 게시물 없음.
+			this.DBClose();
+			return null;
+		}
+		moveVO vo = new moveVO();
+		vo.setMove_car(this.GetValue("move_car"));
+		vo.setMove_no(this.GetValue("move_no"));
+		vo.setMove_inout(GetValue("move_inout"));
+		vo.setMove_time(GetValue("move_time"));
+		vo.setUser_no(GetValue("user_no"));
+		
+		this.DBClose();
+		return vo;
+	}
+	
+	//출차시 최신순
+		public moveVO out_Read()
+		{
+			this.DBOpen();
+			
+			String sql = "";
+			
+			sql = "select * from move where move_inout = 'out' order by move_no desc limit 1 ";
+			this.RunQuery(sql);
+			System.out.println(sql);
+			if( this.GetNext() == false)
+			{
+				//해당 게시물 없음.
+				this.DBClose();
+				return null;
+			}
+			moveVO vo = new moveVO();
+			vo.setMove_car(this.GetValue("move_car"));
+			vo.setMove_no(this.GetValue("move_no"));
+			vo.setMove_inout(GetValue("move_inout"));
+			vo.setMove_time(GetValue("move_time"));
+			vo.setUser_no(GetValue("user_no"));
+			
+			this.DBClose();
+			return vo;
+		}
+	
+	//
+	public ArrayList<moveVO> GetList(String move_car)
+	{
+		ArrayList<moveVO> list = new ArrayList<moveVO>();
+		
+		this.DBOpen();
+		
+		String sql = "";
+		
+		sql  = "select move_no,move_time,move_inout,user_no,move_car ";
+		sql += "from move where move_car ='" + move_car + "' ";
+		sql += "order by user_no desc ";
+		System.out.println(sql);
+		this.RunQuery(sql);
+		while( this.GetNext() == true)
+		{
+			moveVO vo = new moveVO();
+			vo.setMove_no(this.GetValue("move_no"));
+			vo.setMove_time(this.GetValue("move_time"));
+			vo.setMove_inout(this.GetValue("move_inout"));
+			vo.setUser_no(this.GetValue("user_no"));
+			vo.setMove_car(move_car);
+			
+			list.add(vo);
+		}		
+		this.DBClose();
+		return list;
+	}
+	
+	public boolean Insert(moveVO vo)
+	{
+		String sql = "";
+		
+		this.DBOpen();
+		
+		sql  = "insert into move ";
+		sql += "(move_car,move_inout,user_no) ";
+		sql += "values (";
+		sql += "'" + vo.getMove_car() + "',";
+		sql += "'" + vo.getMove_inout() + "',";
+		sql += "'" + vo.getUser_no() + "')";
+		this.RunCommand(sql);
+		System.out.println(sql);
+		this.DBClose();
+		
+ 		return true;
+	}
+	
+	public boolean Delete(String no)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		sql = "delete from move where move_no=" + no;
+		this.RunCommand(sql);
+		
+		return true;
+	}
+	
+	public boolean Update(moveVO vo)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+		sql  = "update move set ";
+		sql += "move_car='" + _R(vo.getMove_car()) + "',";
+		sql += "move_inout='" + _R(vo.getMove_inout()) + "' ";
+		sql += "where move_no=" + vo.getMove_no();
+		
+		this.RunCommand(sql);
+		this.DBClose();
+		
+		return true;
+	}
+}

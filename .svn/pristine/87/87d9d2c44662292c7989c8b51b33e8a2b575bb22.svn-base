@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+	<link href="../css/reservation.css" rel="stylesheet">
+	<script>
+		function reservation(num){
+			location.href = "reservation_inner.jsp";
+		}
+	</script>
+	<body>
+		<header>
+			<table>
+				<tr>
+					<td>EZEN</td>
+					<td>주차 예약 서비스</td>	
+					<td><img src="../img/menu.png"></td>
+				</tr>
+			</table>
+		</header>
+		<table id="notice_name">
+			<tr>
+				<td><b>공지사항</b></td>
+			</tr>
+		</table>
+		<table id="notice" border="1">
+			<tr>
+				<td>
+					<div>
+						<b>안내문</b>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<table id="main_tbl_notice">
+			<tr>
+				<td><b>주차 현황</b></td>
+			</tr>
+		</table>
+		<table id="main_tbl" >
+			<tr id="content" onclick="reservation(1)">
+				<td>
+					<b>B1 &nbsp;&nbsp;&nbsp;314대</b>
+				</td>
+				<td>
+					<b>만차</b>
+				</td>
+			</tr>
+			<tr id="space" ><td colspan="2"></td></tr>
+			<tr id="content" onclick="reservation(2)">
+				<td>
+					<b>B2 &nbsp;&nbsp;&nbsp;184대</b>
+				</td>
+				<td>
+					<b>혼잡</b>
+				</td>
+			</tr>
+			<tr id="space" ><td colspan="2"></td></tr>
+			<tr id="content" onclick="reservation(3)">
+				<td>
+					<b>B3 &nbsp;&nbsp;&nbsp;127대</b>
+				</td>
+				<td>
+					<b>원활</b>
+				</td>
+			</tr>
+			<tr id="space" ><td colspan="2"></td></tr>
+			<tr id="content" onclick="reservation(4)">
+				<td>
+					<b>B4 &nbsp;&nbsp;&nbsp;190대</b>
+				</td>
+				<td>
+					<b>혼잡</b>
+				</td>
+			</tr>
+			<tr id="space" ><td colspan="2"></td></tr>
+		</table>
+		<footer>
+			<table id="footer_button">
+				<tr>
+					<td><img src="../img/left.jpg"></td>
+					<td><img src="../img/middle.jpg"></td>
+					<td><img src="../img/right.jpg"></td>
+				</tr>
+			</table>
+		</footer>
+	</body>
+</html>

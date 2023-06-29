@@ -1,0 +1,112 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page import= "java.util.*" %>
+<%@ page import= "java.text.*" %>
+<%@ page import="car_manager_vo.*" %>
+<%@ page import="car_manager_dto.*" %>
+<%
+String move_car = request.getParameter("move_car");
+String move_time = request.getParameter("move_time");
+moveDTO dto = new moveDTO();
+ArrayList<moveVO> list = dto.GetList_in(move_car);
+ArrayList<moveVO> List = dto.GetList_out(move_car);
+
+String car_number = "";
+String car_time   = "";
+String car_ptime  = "";
+String car_ptime2  = "";
+
+for(moveVO vo : list)
+{
+	car_number = vo.getMove_car();
+	car_time   = vo.getMove_time();
+	car_ptime  = vo.getMove_ptime();
+}
+
+for(moveVO VO : List)
+{
+	car_ptime2  = VO.getMove_ptime();
+}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<link href="../css/more_infomation.css" rel="stylesheet">
+</head>
+<script>
+	function payment(){
+		alert("결제가 완료되었습니다.");
+		self.close() 
+	}
+</script>
+<body>
+	<table id="main_tbl">
+		<tr>
+			<td id="title">
+				주차차량 요금정보
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="../img/car1.jpg">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="info_tbl">
+					<tr>
+						<td>
+							차량번호
+						</td>
+						<td>
+							<%= car_number %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							입차시간
+						</td>
+						<td>
+							<%= car_time %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							주차시간
+						</td>
+						<td>
+							<%= car_ptime2 %>분
+						</td>
+					</tr>
+					<tr>
+						<td>
+							결제금액
+						</td>
+						<td>
+							13,000 원
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table id="input_tbl">
+					<tr>
+						<td style="cursor:pointer;">
+							<input type="button" value="결제" onclick="payment();">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="처음으로" onclick="javascript:self.close();">
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

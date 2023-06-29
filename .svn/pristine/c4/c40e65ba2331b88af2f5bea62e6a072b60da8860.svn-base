@@ -1,0 +1,27 @@
+package car_manager_test;
+import java.util.ArrayList;
+
+import car_manager_dto.*;
+import car_manager_vo.*;
+
+
+public class test 
+{
+	public static void main(String[] args) 
+	{
+		userDTO dto = new userDTO();
+		userVO vo = new userVO();
+		
+		vo.setUser_id("kdne1234");
+		vo.setUser_pw("1234");
+		vo.setUser_name("°­´Ù´Ï¿¤");
+		vo.setUser_phone("010-6225-2124");
+		vo.setUser_car("45µµ5823");
+		vo.setUser_mail("kdne@naver.com");
+		vo.setUser_point("100");
+		
+		System.out.println(vo);
+		
+		dto.Join(vo);
+	}
+}

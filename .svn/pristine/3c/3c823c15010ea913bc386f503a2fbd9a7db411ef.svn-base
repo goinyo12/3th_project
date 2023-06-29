@@ -1,0 +1,27 @@
+import car_manager_vo.*;
+import car_manager_dao.*;
+import java.util.*;
+import car_manager_dto.*;
+
+
+public class test 
+{
+
+	public static void main(String[] args) 
+	{
+		moveDTO dto = new moveDTO();
+		moveVO vo = new moveVO();
+		
+//		vo.setMove_no("24");
+//		vo.setMove_car("12°¡5678");
+//		vo.setMove_inout("out");
+//		vo.setUser_no("2");
+//		
+		dto.Delete("24");
+		
+//		pythonbrowse py = new pythonbrowse();
+//		
+//		py.test();
+	}
+
+}

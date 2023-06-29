@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<table border="1">
+	<tr>
+		<td rowspan="2">
+			<input type="button" onclick="javascript:;" value="입차" id="bottom_data_button"><br>
+			<input type="button" onclick="javascript:;" value="출차" id="bottom_data_button"><br>
+			<input type="button" onclick="javascript:;" value="전체" id="bottom_data_button"><br>
+			<input type="button" onclick="javascript:;" value="회원" id="bottom_data_button"><br>
+		</td>
+		<td>
+			<h3>현황판</h3>
+		</td>
+	</tr>
+	<tr>
+		<td>	
+			<div id="bottom_board">
+				<table border="1" id="bottom_data_tbl">
+				<tr>
+					<th>번호</th>
+					<th>카드번호</th>
+					<th>입차시간</th>
+					<th>차량번호</th>
+				</tr>
+					<%
+					for(int i = 0 ; i < 100; i ++)
+					{
+						%>
+						<tr>
+							<td>번호</td>
+							<td>999-999-999-555</td>
+							<td>2023.01.01 12:12:12</td>
+							<td>123가4567</td>		
+						</tr>
+						<%
+					}
+					%>
+				</table>
+			</div>
+		</td>
+	</tr>
+</table>

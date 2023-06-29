@@ -1,0 +1,102 @@
+import numpy as np
+import os
+import cv2
+from plate_main import plate_check
+import DBManager as db
+from datetime import datetime
+
+##======================================================================
+d_file = '../../testpicture/num_img/'
+files = os.listdir(d_file)
+
+for i in range(0,len(files)):
+    for j in range(0,len(files)):
+        if datetime.fromtimestamp(os.path.getctime(d_file+files[i])) > \
+            datetime.fromtimestamp(os.path.getctime(d_file+files[j])):
+                (files[i], files[j]) = (files[j], files[i])
+
+print(files[0])
+img = files[0]
+
+plate,time = plate_check(img)
+# print(plate)
+
+photo_time = time
+inout = ''
+
+# print("문자열 변환 : ", photo_time)
+
+
+db = db.DBManager()
+db.DBOpen("192.168.0.21", "smartpark", "root", "ezen")
+
+#차번호가 일치하는 유저 서치
+sql = "select user_no from user where user_car='" + plate + "' "
+db.OpenQuery(sql)
+user_check = db.GetTotal()
+user_no = ''
+if(int(user_check) == 1):
+    user_no = str(db.GetValue(0, 'user_no'))
+# print(user_no)
+# db.CloseQuery()
+
+#차번호가 일치하는 입출입 기록 서치
+sql = "select move_inout from move where move_car='" + plate + "' "
+db.OpenQuery(sql)
+# print(sql)
+total = db.GetTotal()
+# print(total)
+# db.CloseQuery()
+# db.DBOpen("192.168.0.21", "smartpark", "root", "ezen")
+
+#입출입 마지막 기록에 따라 insert 구문 실행
+if(int(user_check) == 1):
+    if ((int(total) % 2) == 0):
+        sql  = "insert into move (move_inout,move_car,user_no) "
+        sql += "values ('in','" + plate + "','" + user_no + "') "
+        # print(sql)
+        db.RunSQL(sql)
+        inout = 'in'
+    else:
+        sql  = "insert into move (move_inout,move_car,user_no) "
+        sql += "values ('out','" + plate + "','" + user_no + "') "
+        # print(sql)
+        db.RunSQL(sql)
+        inout = 'out'
+else:
+    if ((int(total) % 2) == 0):
+        sql  = "insert into move (move_inout,move_car,user_no) "
+        sql += "values ('in','" + plate + "','2') "
+        # print(sql)
+        db.RunSQL(sql)
+        inout = 'in'
+    else:
+        sql  = "insert into move (move_inout,move_car,user_no) "
+        sql += "values ('out','" + plate + "','2') "
+        # print(sql)
+        db.RunSQL(sql)
+        inout = 'out'
+    
+    
+#사진 insert
+sql = "select move_no from move order by move_no desc limit 1 "
+db.OpenQuery(sql)
+# print(sql)
+move_no = db.GetValue(0, 'move_no')
+# print(move_no)
+
+sql  = "insert into photo (photo_fname,photo_pname,move_no) "
+sql += "values ('" + photo_time + "-" + plate + ".png',md5('" + plate + ".png'),'" + str(move_no) + "')"
+# print(sql)
+db.RunSQL(sql)
+
+#주차구역 insert
+if (inout == 'in'):
+    sql = "select park_no from park where park_exist='empty'"
+    
+
+
+    
+##======================================================================
+
+db.DBClose()

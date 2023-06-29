@@ -1,0 +1,65 @@
+import car_manager_vo.*;
+import car_manager_dao.*;
+import java.util.*;
+import car_manager_dto.*;
+
+public class test 
+{
+
+	public static void main(String[] args) 
+	{
+//		moveDTO dto = new moveDTO();
+//		moveVO vo = new moveVO();
+		
+//		vo.setMove_no("24");
+//		vo.setMove_car("12가5678");
+//		vo.setMove_inout("out");
+//		vo.setUser_no("2");
+//		
+//		dto.Delete("24");
+		
+//		pythonbrowse py = new pythonbrowse();
+//		
+//		py.test();
+		
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
+		userDTO dto = new userDTO();
+		userVO vo = new userVO();
+		
+//		dto.Delete("3");
+		
+//		ArrayList<userVO> list = dto.GetList();
+//		System.out.println(list);
+		
+//		userVO vo = dto.Read("3");
+//		System.out.println(vo);
+		
+		//회원가입
+		vo.setUser_id("goinyo");
+		vo.setUser_pw("1234");
+		vo.setUser_name("고인영");
+		vo.setUser_phone("010-5241-0603");
+		vo.setUser_car("30거0958");
+		vo.setUser_mail("goinyo@naver.com");
+		
+		dto.Join(vo);
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
+//		photoDTO dto = new photoDTO();
+//		photoVO vo = new photoVO();
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
+//		parkDTO dto = new parkDTO();
+//		parkVO vo = new parkVO();
+//		
+//		vo.setPark_no("1fa03")
+//		vo.setPark_exist("y")
+//		vo.setUser_no("3")
+//		vo.setMove_no()
+//		vo.setPhoto_no()
+
+	}
+}

@@ -1,0 +1,74 @@
+package car_manager_dto;
+import car_manager_vo.*;
+import car_manager_dao.*;
+import java.util.*;
+
+
+public class userDTO extends DBManager
+{
+
+	//1명의 회원정보를 불러옴
+	public userVO Read(String no)
+	{
+		this.DBOpen();
+		
+		String sql = "";
+
+		sql  = "select user_name,user_phone,user_car,user_date,user_point,user_mail,user_id,user_pw ";
+		sql += "from user where no = " + no;
+		this.RunQuery(sql);
+		if( this.GetNext() == false)
+		{
+			//해당 게시물 없음.
+			this.DBClose();
+			return null;
+		}
+		userVO vo = new userVO();
+		vo.setUser_no(no);
+		vo.setUser_name(this.GetValue("user_name"));
+		vo.setUser_phone(this.GetValue("user_phone"));
+		vo.setUser_car(this.GetValue("user_car"));
+		vo.setUser_date(this.GetValue("user_date"));
+		vo.setUser_point(this.GetValue("user_point"));
+		vo.setUser_mail(this.GetValue("user_mail"));
+		vo.setUser_id(this.GetValue("user_id"));
+		vo.setUser_pw(this.GetValue("user_pw"));
+		
+		this.DBClose();
+		return vo;
+	}
+	
+	//회원들의 목록을 얻는다.
+	public ArrayList<userVO> GetList()
+	{
+		ArrayList<userVO> list = new ArrayList<userVO>();
+		
+		this.DBOpen();
+		
+		String sql = "";
+		
+		sql  = "select user_no,user_name,user_phone,user_car,user_date,user_point,user_mail,user_id,user_pw ";
+		sql += "from user ";
+		sql += "order by no desc ";
+		
+		this.RunQuery(sql);
+		while( this.GetNext() == true)
+		{
+			userVO vo = new userVO();
+			vo.setUser_no(this.GetValue("user_no"));
+			vo.setUser_name(this.GetValue("user_name"));
+			vo.setUser_phone(this.GetValue("user_phone"));
+			vo.setUser_car(this.GetValue("user_car"));
+			vo.setUser_date(this.GetValue("user_date"));
+			vo.setUser_point(this.GetValue("user_point"));
+			vo.setUser_mail(this.GetValue("user_mail"));
+			vo.setUser_id(this.GetValue("user_id"));
+			vo.setUser_pw(this.GetValue("user_pw"));
+			
+			list.add(vo);
+		}		
+		this.DBClose();
+		
+		return list;
+	}
+}

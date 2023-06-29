@@ -1,0 +1,735 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%
+String level = request.getParameter("level");
+int floor = 0;
+if(level!=null && !level.equals(""))
+{
+	floor = Integer.parseInt(level);
+}
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+<link href="../css/reservation_inner.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+<script type="text/javascript" src="http://davidlynch.org/projects/maphilight/jquery.maphilight.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.fn.maphilight.defaults = {
+				    fill: true,  //이미지맵 링크에 마우스가 올라오면 색을 넣을 건지 여부
+				    fillColor: '61C886',  // 색상지정
+				    fillOpacity: 0.7,  // 투명도 지정 0~1
+				    stroke: true,    // border를 넣을건지 여부 
+				    strokeColor: '61C886',  //border 색상
+				    strokeOpacity: 1,  //border 투명도
+				    strokeWidth: 6  //border 폭
+				}
+			$('img[usemap]').rwdImageMaps();
+			$('img[usemap]').maphilight(); 
+			MainImage(<%= floor %>);
+		});
+		function ReLoad()
+		{
+			$('img[usemap]').rwdImageMaps();
+			$('img[usemap]').maphilight(); 
+		}
+		function MainImage(floor)
+		{
+			var word1 = floor;
+			$("#main_space_floor1 b").html(word1+"F");
+			$("#parking_area b").html(word1+"F")
+			$.ajax
+			({
+				type: "get",
+				url: "reservation_inner"+floor+".jsp",
+				dataType:"html",
+				success: function(data)
+				{	
+					$("#overlap").css('opacity','0');
+					$("#img_case").html(data);
+					ReLoad();
+				}
+			});		
+		}
+		function checked2(pArt){
+			$("#overlap").css('opacity','0.8');
+			var word1 = pArt.substring(0,1);
+			var word2 = pArt.substring(1,2);
+			var word3 = pArt.substring(2,3);
+			var word4 = pArt.substring(3,5);
+		
+		
+			switch(pArt){
+				case "1FF1":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",522.562);break;
+				case "1FF2":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",547.562);break;
+				case "1FF3":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",571.562);break;
+				case "1FF4":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",610.562);break;
+				case "1FF5":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",634.562);break;
+				case "1FF6":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",659.562);break;
+				case "1FF7":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",699.562);break;
+				case "1FF8":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",724.562);break;
+				case "1FF9":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",748.562);break;
+				case "1FF10":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",787.562);break;
+				case "1FF11":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",812.562);break;
+				case "1FF12":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",836.562);break;
+				case "1FF13":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",876.562);break;
+				case "1FF14":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",901.562);break;
+				case "1FF15":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",926.562);break; 
+			
+				case "2FF1":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",522.562);break;
+				case "2FF2":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",547.562);break;
+				case "2FF3":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",571.562);break;
+				case "2FF4":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",610.562);break;
+				case "2FF5":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",634.562);break;
+				case "2FF6":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",659.562);break;
+				case "2FF7":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",699.562);break;
+				case "2FF8":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",724.562);break;
+				case "2FF9":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",748.562);break;
+				case "2FF10":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",787.562);break;
+				case "2FF11":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",812.562);break;
+				case "2FF12":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",836.562);break;
+				case "2FF13":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",876.562);break;
+				case "2FF14":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",901.562);break;
+				case "2FF15":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",926.562);break;
+			
+				case "3FF1":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",522.562);break;
+				case "3FF2":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",547.562);break;
+				case "3FF3":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",571.562);break;
+				case "3FF4":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",610.562);break;
+				case "3FF5":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",634.562);break;
+				case "3FF6":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",659.562);break;
+				case "3FF7":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",699.562);break;
+				case "3FF8":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",724.562);break;
+				case "3FF9":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",748.562);break;
+				case "3FF10":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",787.562);break;
+				case "3FF11":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",812.562);break;
+				case "3FF12":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",836.562);break;
+				case "3FF13":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",876.562);break;
+				case "3FF14":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",901.562);break;
+				case "3FF15":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",926.562);break;
+			
+				case "4FF1":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",522.562);break;
+				case "4FF2":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",547.562);break;
+				case "4FF3":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",571.562);break;
+				case "4FF4":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",610.562);break;
+				case "4FF5":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",634.562);break;
+				case "4FF6":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",659.562);break;
+				case "4FF7":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",699.562);break;
+				case "4FF8":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",724.562);break;
+				case "4FF9":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",748.562);break;
+				case "4FF10":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",787.562);break;
+				case "4FF11":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",812.562);break;
+				case "4FF12":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",836.562);break;
+				case "4FF13":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",876.562);break;
+				case "4FF14":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",901.562);break;
+				case "4FF15":$("#overlap").css("width",58);$("#overlap").css("height",26);$("#overlap").css("left",94);$("#overlap").css("top",926.562);break;
+			
+			}
+			$("#parking_area").html("<b>"+word1+word2+"</b>"+"&nbsp;&nbsp;"+word3+"-"+word4);
+			$("#main_space_floor1 b").html(word1+word2);
+			$("#main_space tr:nth-child(1) td:nth-child(2)").html(word3+"-"+word4);
+		}
+	  	function checked(pAlt){
+	  		$("#overlap").css('opacity','0.8');
+	  		$("#overlap").css("width",26);$("#overlap").css("height",58);
+	  		var word1 = pAlt.substring(0,1);
+			var word2 = pAlt.substring(1,2);
+			var word3 = pAlt.substring(2,3);
+			var word4 = pAlt.substring(3,5);
+	  		switch(pAlt){
+				case "1FA1": $("#overlap").css("left",759.5);$("#overlap").css("top",859.562);break;
+				case "1FA2": $("#overlap").css("left",734.5);$("#overlap").css("top",859.562);break;
+				case "1FA3": $("#overlap").css("left",710.5);$("#overlap").css("top",859.562);break;
+				case "1FA4": $("#overlap").css("left",671.5);$("#overlap").css("top",859.562);break;
+				case "1FA5": $("#overlap").css("left",647.5);$("#overlap").css("top",859.562);break;
+				case "1FA6": $("#overlap").css("left",622.5);$("#overlap").css("top",859.562);break;
+				case "1FA7": $("#overlap").css("left",582.5);$("#overlap").css("top",859.562);break;
+				case "1FA8": $("#overlap").css("left",557.5);$("#overlap").css("top",859.562);break;
+				case "1FA9": $("#overlap").css("left",532.5);$("#overlap").css("top",859.562);break;
+				case "1FA10": $("#overlap").css("left",480.5);$("#overlap").css("top",859.562);break;
+				case "1FA11": $("#overlap").css("left",456.5);$("#overlap").css("top",859.562);break;
+				case "1FA12": $("#overlap").css("left",431.5);$("#overlap").css("top",859.562);break;
+				case "1FA13": $("#overlap").css("left",392.5);$("#overlap").css("top",859.562);break;
+				case "1FA14": $("#overlap").css("left",368.5);$("#overlap").css("top",859.562);break;
+				case "1FA15": $("#overlap").css("left",343.5);$("#overlap").css("top",859.562);break;
+				case "1FA16": $("#overlap").css("left",304.5);$("#overlap").css("top",859.562);break;
+				case "1FA17": $("#overlap").css("left",279.5);$("#overlap").css("top",859.562);break;
+				case "1FA18": $("#overlap").css("left",254.5);$("#overlap").css("top",859.562);break;
+				
+				case "1FB1": $("#overlap").css("left",759.5);$("#overlap").css("top",782.562);break;
+				case "1FB2": $("#overlap").css("left",734.5);$("#overlap").css("top",782.562);break;
+				case "1FB3": $("#overlap").css("left",710.5);$("#overlap").css("top",782.562);break;
+				case "1FB4": $("#overlap").css("left",671.5);$("#overlap").css("top",782.562);break;
+				case "1FB5": $("#overlap").css("left",647.5);$("#overlap").css("top",782.562);break;
+				case "1FB6": $("#overlap").css("left",622.5);$("#overlap").css("top",782.562);break;
+				case "1FB7": $("#overlap").css("left",582.5);$("#overlap").css("top",782.562);break;
+				case "1FB8": $("#overlap").css("left",557.5);$("#overlap").css("top",782.562);break;
+				case "1FB9": $("#overlap").css("left",532.5);$("#overlap").css("top",782.562);break;
+				case "1FB10": $("#overlap").css("left",480.5);$("#overlap").css("top",782.562);break;
+				case "1FB11": $("#overlap").css("left",456.5);$("#overlap").css("top",782.562);break;
+				case "1FB12": $("#overlap").css("left",431.5);$("#overlap").css("top",782.562);break;
+				case "1FB13": $("#overlap").css("left",392.5);$("#overlap").css("top",782.562);break;
+				case "1FB14": $("#overlap").css("left",368.5);$("#overlap").css("top",782.562);break;
+				case "1FB15": $("#overlap").css("left",343.5);$("#overlap").css("top",782.562);break;
+				case "1FB16": $("#overlap").css("left",303.5);$("#overlap").css("top",782.562);break;
+				case "1FB17": $("#overlap").css("left",279.5);$("#overlap").css("top",782.562);break;
+				case "1FB18": $("#overlap").css("left",254.5);$("#overlap").css("top",782.562);break;
+				 
+				case "1FC1": $("#overlap").css("left",759.5);$("#overlap").css("top",669.562);break;
+				case "1FC2": $("#overlap").css("left",734.5);$("#overlap").css("top",669.562);break;
+				case "1FC3": $("#overlap").css("left",710.5);$("#overlap").css("top",669.562);break;
+				case "1FC4": $("#overlap").css("left",671.5);$("#overlap").css("top",669.562);break;
+				case "1FC5": $("#overlap").css("left",647.5);$("#overlap").css("top",669.562);break;
+				case "1FC6": $("#overlap").css("left",622.5);$("#overlap").css("top",669.562);break;
+				case "1FC7": $("#overlap").css("left",582.5);$("#overlap").css("top",669.562);break;
+				case "1FC8": $("#overlap").css("left",557.5);$("#overlap").css("top",669.562);break;
+				case "1FC9": $("#overlap").css("left",532.5);$("#overlap").css("top",669.562);break;
+				case "1FC10": $("#overlap").css("left",480.5);$("#overlap").css("top",669.562);break;
+				case "1FC11": $("#overlap").css("left",456.5);$("#overlap").css("top",669.562);break;
+				case "1FC12": $("#overlap").css("left",431.5);$("#overlap").css("top",669.562);break;
+				case "1FC13": $("#overlap").css("left",392.5);$("#overlap").css("top",669.562);break;
+				case "1FC14": $("#overlap").css("left",368.5);$("#overlap").css("top",669.562);break;
+				case "1FC15": $("#overlap").css("left",343.5);$("#overlap").css("top",669.562);break;
+				case "1FC16": $("#overlap").css("left",303.5);$("#overlap").css("top",669.562);break;
+				case "1FC17": $("#overlap").css("left",279.5);$("#overlap").css("top",669.562);break;
+				case "1FC18": $("#overlap").css("left",254.5);$("#overlap").css("top",669.562);break;
+				
+				case "1FD1": $("#overlap").css("left",759.5);$("#overlap").css("top",591.562);break;
+				case "1FD2": $("#overlap").css("left",734.5);$("#overlap").css("top",591.562);break;
+				case "1FD3": $("#overlap").css("left",710.5);$("#overlap").css("top",591.562);break;
+				case "1FD4": $("#overlap").css("left",671.5);$("#overlap").css("top",591.562);break;
+				case "1FD5": $("#overlap").css("left",647.5);$("#overlap").css("top",591.562);break;
+				case "1FD6": $("#overlap").css("left",622.5);$("#overlap").css("top",591.562);break;
+				case "1FD7": $("#overlap").css("left",582.5);$("#overlap").css("top",591.562);break;
+				case "1FD8": $("#overlap").css("left",557.5);$("#overlap").css("top",591.562);break;
+				case "1FD9": $("#overlap").css("left",532.5);$("#overlap").css("top",591.562);break;
+				case "1FD10": $("#overlap").css("left",480.5);$("#overlap").css("top",591.562);break;
+				case "1FD11": $("#overlap").css("left",456.5);$("#overlap").css("top",591.562);break;
+				case "1FD12": $("#overlap").css("left",431.5);$("#overlap").css("top",591.562);break;
+				case "1FD13": $("#overlap").css("left",392.5);$("#overlap").css("top",591.562);break;
+				case "1FD14": $("#overlap").css("left",368.5);$("#overlap").css("top",591.562);break;
+				case "1FD15": $("#overlap").css("left",343.5);$("#overlap").css("top",591.562);break;
+				case "1FD16": $("#overlap").css("left",303.5);$("#overlap").css("top",591.562);break;
+				case "1FD17": $("#overlap").css("left",279.5);$("#overlap").css("top",591.562);break;
+				case "1FD18": $("#overlap").css("left",254.5);$("#overlap").css("top",591.562);break;
+				
+				case "1FE1": $("#overlap").css("left",759.5);$("#overlap").css("top",447.562);break;
+				case "1FE2": $("#overlap").css("left",734.5);$("#overlap").css("top",447.562);break;
+				case "1FE3": $("#overlap").css("left",709.5);$("#overlap").css("top",447.562);break;
+				case "1FE4": $("#overlap").css("left",670.5);$("#overlap").css("top",447.562);break;
+				case "1FE5": $("#overlap").css("left",646.5);$("#overlap").css("top",447.562);break;
+				case "1FE6": $("#overlap").css("left",621.5);$("#overlap").css("top",447.562);break;
+				case "1FE7": $("#overlap").css("left",581.5);$("#overlap").css("top",447.562);break;
+				case "1FE8": $("#overlap").css("left",556.5);$("#overlap").css("top",447.562);break;
+				case "1FE9": $("#overlap").css("left",532.5);$("#overlap").css("top",447.562);break;
+				case "1FE10": $("#overlap").css("left",495.5);$("#overlap").css("top",447.562);break;
+				case "1FE11": $("#overlap").css("left",471.5);$("#overlap").css("top",447.562);break;
+				case "1FE12": $("#overlap").css("left",446.5);$("#overlap").css("top",447.562);break;
+				case "1FE13": $("#overlap").css("left",408.5);$("#overlap").css("top",447.562);break;
+				case "1FE14": $("#overlap").css("left",383.5);$("#overlap").css("top",447.562);break;
+				case "1FE15": $("#overlap").css("left",358.5);$("#overlap").css("top",447.562);break;
+				case "1FE16": $("#overlap").css("left",319.5);$("#overlap").css("top",447.562);break;
+				case "1FE17": $("#overlap").css("left",294.5);$("#overlap").css("top",447.562);break;
+				case "1FE18": $("#overlap").css("left",270.5);$("#overlap").css("top",447.562);break;
+				case "1FE19": $("#overlap").css("left",230.5);$("#overlap").css("top",447.562);break;
+				case "1FE20": $("#overlap").css("left",205.5);$("#overlap").css("top",447.562);break;
+				case "1FE21": $("#overlap").css("left",181.5);$("#overlap").css("top",447.562);break;
+			
+				case "2FA1": $("#overlap").css("left",759.5);$("#overlap").css("top",859.562);break;
+				case "2FA2": $("#overlap").css("left",734.5);$("#overlap").css("top",859.562);break;
+				case "2FA3": $("#overlap").css("left",710.5);$("#overlap").css("top",859.562);break;
+				case "2FA4": $("#overlap").css("left",671.5);$("#overlap").css("top",859.562);break;
+				case "2FA5": $("#overlap").css("left",647.5);$("#overlap").css("top",859.562);break;
+				case "2FA6": $("#overlap").css("left",622.5);$("#overlap").css("top",859.562);break;
+				case "2FA7": $("#overlap").css("left",582.5);$("#overlap").css("top",859.562);break;
+				case "2FA8": $("#overlap").css("left",557.5);$("#overlap").css("top",859.562);break;
+				case "2FA9": $("#overlap").css("left",532.5);$("#overlap").css("top",859.562);break;
+				case "2FA10": $("#overlap").css("left",480.5);$("#overlap").css("top",859.562);break;
+				case "2FA11": $("#overlap").css("left",456.5);$("#overlap").css("top",859.562);break;
+				case "2FA12": $("#overlap").css("left",431.5);$("#overlap").css("top",859.562);break;
+				case "2FA13": $("#overlap").css("left",392.5);$("#overlap").css("top",859.562);break;
+				case "2FA14": $("#overlap").css("left",368.5);$("#overlap").css("top",859.562);break;
+				case "2FA15": $("#overlap").css("left",343.5);$("#overlap").css("top",859.562);break;
+				case "2FA16": $("#overlap").css("left",304.5);$("#overlap").css("top",859.562);break;
+				case "2FA17": $("#overlap").css("left",279.5);$("#overlap").css("top",859.562);break;
+				case "2FA18": $("#overlap").css("left",254.5);$("#overlap").css("top",859.562);break;
+				
+				case "2FB1": $("#overlap").css("left",759.5);$("#overlap").css("top",782.562);break;
+				case "2FB2": $("#overlap").css("left",734.5);$("#overlap").css("top",782.562);break;
+				case "2FB3": $("#overlap").css("left",710.5);$("#overlap").css("top",782.562);break;
+				case "2FB4": $("#overlap").css("left",671.5);$("#overlap").css("top",782.562);break;
+				case "2FB5": $("#overlap").css("left",647.5);$("#overlap").css("top",782.562);break;
+				case "2FB6": $("#overlap").css("left",622.5);$("#overlap").css("top",782.562);break;
+				case "2FB7": $("#overlap").css("left",582.5);$("#overlap").css("top",782.562);break;
+				case "2FB8": $("#overlap").css("left",557.5);$("#overlap").css("top",782.562);break;
+				case "2FB9": $("#overlap").css("left",532.5);$("#overlap").css("top",782.562);break;
+				case "2FB10": $("#overlap").css("left",480.5);$("#overlap").css("top",782.562);break;
+				case "2FB11": $("#overlap").css("left",456.5);$("#overlap").css("top",782.562);break;
+				case "2FB12": $("#overlap").css("left",431.5);$("#overlap").css("top",782.562);break;
+				case "2FB13": $("#overlap").css("left",392.5);$("#overlap").css("top",782.562);break;
+				case "2FB14": $("#overlap").css("left",368.5);$("#overlap").css("top",782.562);break;
+				case "2FB15": $("#overlap").css("left",343.5);$("#overlap").css("top",782.562);break;
+				case "2FB16": $("#overlap").css("left",303.5);$("#overlap").css("top",782.562);break;
+				case "2FB17": $("#overlap").css("left",279.5);$("#overlap").css("top",782.562);break;
+				case "2FB18": $("#overlap").css("left",254.5);$("#overlap").css("top",782.562);break;
+				 
+				case "2FC1": $("#overlap").css("left",759.5);$("#overlap").css("top",669.562);break;
+				case "2FC2": $("#overlap").css("left",734.5);$("#overlap").css("top",669.562);break;
+				case "2FC3": $("#overlap").css("left",710.5);$("#overlap").css("top",669.562);break;
+				case "2FC4": $("#overlap").css("left",671.5);$("#overlap").css("top",669.562);break;
+				case "2FC5": $("#overlap").css("left",647.5);$("#overlap").css("top",669.562);break;
+				case "2FC6": $("#overlap").css("left",622.5);$("#overlap").css("top",669.562);break;
+				case "2FC7": $("#overlap").css("left",582.5);$("#overlap").css("top",669.562);break;
+				case "2FC8": $("#overlap").css("left",557.5);$("#overlap").css("top",669.562);break;
+				case "2FC9": $("#overlap").css("left",532.5);$("#overlap").css("top",669.562);break;
+				case "2FC10": $("#overlap").css("left",480.5);$("#overlap").css("top",669.562);break;
+				case "2FC11": $("#overlap").css("left",456.5);$("#overlap").css("top",669.562);break;
+				case "2FC12": $("#overlap").css("left",431.5);$("#overlap").css("top",669.562);break;
+				case "2FC13": $("#overlap").css("left",392.5);$("#overlap").css("top",669.562);break;
+				case "2FC14": $("#overlap").css("left",368.5);$("#overlap").css("top",669.562);break;
+				case "2FC15": $("#overlap").css("left",343.5);$("#overlap").css("top",669.562);break;
+				case "2FC16": $("#overlap").css("left",303.5);$("#overlap").css("top",669.562);break;
+				case "2FC17": $("#overlap").css("left",279.5);$("#overlap").css("top",669.562);break;
+				case "2FC18": $("#overlap").css("left",254.5);$("#overlap").css("top",669.562);break;
+				
+				case "2FD1": $("#overlap").css("left",759.5);$("#overlap").css("top",591.562);break;
+				case "2FD2": $("#overlap").css("left",734.5);$("#overlap").css("top",591.562);break;
+				case "2FD3": $("#overlap").css("left",710.5);$("#overlap").css("top",591.562);break;
+				case "2FD4": $("#overlap").css("left",671.5);$("#overlap").css("top",591.562);break;
+				case "2FD5": $("#overlap").css("left",647.5);$("#overlap").css("top",591.562);break;
+				case "2FD6": $("#overlap").css("left",622.5);$("#overlap").css("top",591.562);break;
+				case "2FD7": $("#overlap").css("left",582.5);$("#overlap").css("top",591.562);break;
+				case "2FD8": $("#overlap").css("left",557.5);$("#overlap").css("top",591.562);break;
+				case "2FD9": $("#overlap").css("left",532.5);$("#overlap").css("top",591.562);break;
+				case "2FD10": $("#overlap").css("left",480.5);$("#overlap").css("top",591.562);break;
+				case "2FD11": $("#overlap").css("left",456.5);$("#overlap").css("top",591.562);break;
+				case "2FD12": $("#overlap").css("left",431.5);$("#overlap").css("top",591.562);break;
+				case "2FD13": $("#overlap").css("left",392.5);$("#overlap").css("top",591.562);break;
+				case "2FD14": $("#overlap").css("left",368.5);$("#overlap").css("top",591.562);break;
+				case "2FD15": $("#overlap").css("left",343.5);$("#overlap").css("top",591.562);break;
+				case "2FD16": $("#overlap").css("left",303.5);$("#overlap").css("top",591.562);break;
+				case "2FD17": $("#overlap").css("left",279.5);$("#overlap").css("top",591.562);break;
+				case "2FD18": $("#overlap").css("left",254.5);$("#overlap").css("top",591.562);break;
+				
+				case "2FE1": $("#overlap").css("left",759.5);$("#overlap").css("top",447.562);break;
+				case "2FE2": $("#overlap").css("left",734.5);$("#overlap").css("top",447.562);break;
+				case "2FE3": $("#overlap").css("left",709.5);$("#overlap").css("top",447.562);break;
+				case "2FE4": $("#overlap").css("left",670.5);$("#overlap").css("top",447.562);break;
+				case "2FE5": $("#overlap").css("left",646.5);$("#overlap").css("top",447.562);break;
+				case "2FE6": $("#overlap").css("left",621.5);$("#overlap").css("top",447.562);break;
+				case "2FE7": $("#overlap").css("left",581.5);$("#overlap").css("top",447.562);break;
+				case "2FE8": $("#overlap").css("left",556.5);$("#overlap").css("top",447.562);break;
+				case "2FE9": $("#overlap").css("left",532.5);$("#overlap").css("top",447.562);break;
+				case "2FE10": $("#overlap").css("left",495.5);$("#overlap").css("top",447.562);break;
+				case "2FE11": $("#overlap").css("left",471.5);$("#overlap").css("top",447.562);break;
+				case "2FE12": $("#overlap").css("left",446.5);$("#overlap").css("top",447.562);break;
+				case "2FE13": $("#overlap").css("left",408.5);$("#overlap").css("top",447.562);break;
+				case "2FE14": $("#overlap").css("left",383.5);$("#overlap").css("top",447.562);break;
+				case "2FE15": $("#overlap").css("left",358.5);$("#overlap").css("top",447.562);break;
+				case "2FE16": $("#overlap").css("left",319.5);$("#overlap").css("top",447.562);break;
+				case "2FE17": $("#overlap").css("left",294.5);$("#overlap").css("top",447.562);break;
+				case "2FE18": $("#overlap").css("left",270.5);$("#overlap").css("top",447.562);break;
+				case "2FE19": $("#overlap").css("left",230.5);$("#overlap").css("top",447.562);break;
+				case "2FE20": $("#overlap").css("left",205.5);$("#overlap").css("top",447.562);break;
+				case "2FE21": $("#overlap").css("left",181.5);$("#overlap").css("top",447.562);break;
+	  		
+				case "3FA1": $("#overlap").css("left",759.5);$("#overlap").css("top",859.562);break;
+				case "3FA2": $("#overlap").css("left",734.5);$("#overlap").css("top",859.562);break;
+				case "3FA3": $("#overlap").css("left",710.5);$("#overlap").css("top",859.562);break;
+				case "3FA4": $("#overlap").css("left",671.5);$("#overlap").css("top",859.562);break;
+				case "3FA5": $("#overlap").css("left",647.5);$("#overlap").css("top",859.562);break;
+				case "3FA6": $("#overlap").css("left",622.5);$("#overlap").css("top",859.562);break;
+				case "3FA7": $("#overlap").css("left",582.5);$("#overlap").css("top",859.562);break;
+				case "3FA8": $("#overlap").css("left",557.5);$("#overlap").css("top",859.562);break;
+				case "3FA9": $("#overlap").css("left",532.5);$("#overlap").css("top",859.562);break;
+				case "3FA10": $("#overlap").css("left",480.5);$("#overlap").css("top",859.562);break;
+				case "3FA11": $("#overlap").css("left",456.5);$("#overlap").css("top",859.562);break;
+				case "3FA12": $("#overlap").css("left",431.5);$("#overlap").css("top",859.562);break;
+				case "3FA13": $("#overlap").css("left",392.5);$("#overlap").css("top",859.562);break;
+				case "3FA14": $("#overlap").css("left",368.5);$("#overlap").css("top",859.562);break;
+				case "3FA15": $("#overlap").css("left",343.5);$("#overlap").css("top",859.562);break;
+				case "3FA16": $("#overlap").css("left",304.5);$("#overlap").css("top",859.562);break;
+				case "3FA17": $("#overlap").css("left",279.5);$("#overlap").css("top",859.562);break;
+				case "3FA18": $("#overlap").css("left",254.5);$("#overlap").css("top",859.562);break;
+				
+				case "3FB1": $("#overlap").css("left",759.5);$("#overlap").css("top",782.562);break;
+				case "3FB2": $("#overlap").css("left",734.5);$("#overlap").css("top",782.562);break;
+				case "3FB3": $("#overlap").css("left",710.5);$("#overlap").css("top",782.562);break;
+				case "3FB4": $("#overlap").css("left",671.5);$("#overlap").css("top",782.562);break;
+				case "3FB5": $("#overlap").css("left",647.5);$("#overlap").css("top",782.562);break;
+				case "3FB6": $("#overlap").css("left",622.5);$("#overlap").css("top",782.562);break;
+				case "3FB7": $("#overlap").css("left",582.5);$("#overlap").css("top",782.562);break;
+				case "3FB8": $("#overlap").css("left",557.5);$("#overlap").css("top",782.562);break;
+				case "3FB9": $("#overlap").css("left",532.5);$("#overlap").css("top",782.562);break;
+				case "3FB10": $("#overlap").css("left",480.5);$("#overlap").css("top",782.562);break;
+				case "3FB11": $("#overlap").css("left",456.5);$("#overlap").css("top",782.562);break;
+				case "3FB12": $("#overlap").css("left",431.5);$("#overlap").css("top",782.562);break;
+				case "3FB13": $("#overlap").css("left",392.5);$("#overlap").css("top",782.562);break;
+				case "3FB14": $("#overlap").css("left",368.5);$("#overlap").css("top",782.562);break;
+				case "3FB15": $("#overlap").css("left",343.5);$("#overlap").css("top",782.562);break;
+				case "3FB16": $("#overlap").css("left",303.5);$("#overlap").css("top",782.562);break;
+				case "3FB17": $("#overlap").css("left",279.5);$("#overlap").css("top",782.562);break;
+				case "3FB18": $("#overlap").css("left",254.5);$("#overlap").css("top",782.562);break;
+				 
+				case "3FC1": $("#overlap").css("left",759.5);$("#overlap").css("top",669.562);break;
+				case "3FC2": $("#overlap").css("left",734.5);$("#overlap").css("top",669.562);break;
+				case "3FC3": $("#overlap").css("left",710.5);$("#overlap").css("top",669.562);break;
+				case "3FC4": $("#overlap").css("left",671.5);$("#overlap").css("top",669.562);break;
+				case "3FC5": $("#overlap").css("left",647.5);$("#overlap").css("top",669.562);break;
+				case "3FC6": $("#overlap").css("left",622.5);$("#overlap").css("top",669.562);break;
+				case "3FC7": $("#overlap").css("left",582.5);$("#overlap").css("top",669.562);break;
+				case "3FC8": $("#overlap").css("left",557.5);$("#overlap").css("top",669.562);break;
+				case "3FC9": $("#overlap").css("left",532.5);$("#overlap").css("top",669.562);break;
+				case "3FC10": $("#overlap").css("left",480.5);$("#overlap").css("top",669.562);break;
+				case "3FC11": $("#overlap").css("left",456.5);$("#overlap").css("top",669.562);break;
+				case "3FC12": $("#overlap").css("left",431.5);$("#overlap").css("top",669.562);break;
+				case "3FC13": $("#overlap").css("left",392.5);$("#overlap").css("top",669.562);break;
+				case "3FC14": $("#overlap").css("left",368.5);$("#overlap").css("top",669.562);break;
+				case "3FC15": $("#overlap").css("left",343.5);$("#overlap").css("top",669.562);break;
+				case "3FC16": $("#overlap").css("left",303.5);$("#overlap").css("top",669.562);break;
+				case "3FC17": $("#overlap").css("left",279.5);$("#overlap").css("top",669.562);break;
+				case "3FC18": $("#overlap").css("left",254.5);$("#overlap").css("top",669.562);break;
+				
+				case "3FD1": $("#overlap").css("left",759.5);$("#overlap").css("top",591.562);break;
+				case "3FD2": $("#overlap").css("left",734.5);$("#overlap").css("top",591.562);break;
+				case "3FD3": $("#overlap").css("left",710.5);$("#overlap").css("top",591.562);break;
+				case "3FD4": $("#overlap").css("left",671.5);$("#overlap").css("top",591.562);break;
+				case "3FD5": $("#overlap").css("left",647.5);$("#overlap").css("top",591.562);break;
+				case "3FD6": $("#overlap").css("left",622.5);$("#overlap").css("top",591.562);break;
+				case "3FD7": $("#overlap").css("left",582.5);$("#overlap").css("top",591.562);break;
+				case "3FD8": $("#overlap").css("left",557.5);$("#overlap").css("top",591.562);break;
+				case "3FD9": $("#overlap").css("left",532.5);$("#overlap").css("top",591.562);break;
+				case "3FD10": $("#overlap").css("left",480.5);$("#overlap").css("top",591.562);break;
+				case "3FD11": $("#overlap").css("left",456.5);$("#overlap").css("top",591.562);break;
+				case "3FD12": $("#overlap").css("left",431.5);$("#overlap").css("top",591.562);break;
+				case "3FD13": $("#overlap").css("left",392.5);$("#overlap").css("top",591.562);break;
+				case "3FD14": $("#overlap").css("left",368.5);$("#overlap").css("top",591.562);break;
+				case "3FD15": $("#overlap").css("left",343.5);$("#overlap").css("top",591.562);break;
+				case "3FD16": $("#overlap").css("left",303.5);$("#overlap").css("top",591.562);break;
+				case "3FD17": $("#overlap").css("left",279.5);$("#overlap").css("top",591.562);break;
+				case "3FD18": $("#overlap").css("left",254.5);$("#overlap").css("top",591.562);break;
+				
+				case "3FE1": $("#overlap").css("left",759.5);$("#overlap").css("top",447.562);break;
+				case "3FE2": $("#overlap").css("left",734.5);$("#overlap").css("top",447.562);break;
+				case "3FE3": $("#overlap").css("left",709.5);$("#overlap").css("top",447.562);break;
+				case "3FE4": $("#overlap").css("left",670.5);$("#overlap").css("top",447.562);break;
+				case "3FE5": $("#overlap").css("left",646.5);$("#overlap").css("top",447.562);break;
+				case "3FE6": $("#overlap").css("left",621.5);$("#overlap").css("top",447.562);break;
+				case "3FE7": $("#overlap").css("left",581.5);$("#overlap").css("top",447.562);break;
+				case "3FE8": $("#overlap").css("left",556.5);$("#overlap").css("top",447.562);break;
+				case "3FE9": $("#overlap").css("left",532.5);$("#overlap").css("top",447.562);break;
+				case "3FE10": $("#overlap").css("left",495.5);$("#overlap").css("top",447.562);break;
+				case "3FE11": $("#overlap").css("left",471.5);$("#overlap").css("top",447.562);break;
+				case "3FE12": $("#overlap").css("left",446.5);$("#overlap").css("top",447.562);break;
+				case "3FE13": $("#overlap").css("left",408.5);$("#overlap").css("top",447.562);break;
+				case "3FE14": $("#overlap").css("left",383.5);$("#overlap").css("top",447.562);break;
+				case "3FE15": $("#overlap").css("left",358.5);$("#overlap").css("top",447.562);break;
+				case "3FE16": $("#overlap").css("left",319.5);$("#overlap").css("top",447.562);break;
+				case "3FE17": $("#overlap").css("left",294.5);$("#overlap").css("top",447.562);break;
+				case "3FE18": $("#overlap").css("left",270.5);$("#overlap").css("top",447.562);break;
+				case "3FE19": $("#overlap").css("left",230.5);$("#overlap").css("top",447.562);break;
+				case "3FE20": $("#overlap").css("left",205.5);$("#overlap").css("top",447.562);break;
+				case "3FE21": $("#overlap").css("left",181.5);$("#overlap").css("top",447.562);break;
+	  		
+				case "4FA1": $("#overlap").css("left",759.5);$("#overlap").css("top",859.562);break;
+				case "4FA2": $("#overlap").css("left",734.5);$("#overlap").css("top",859.562);break;
+				case "4FA3": $("#overlap").css("left",710.5);$("#overlap").css("top",859.562);break;
+				case "4FA4": $("#overlap").css("left",671.5);$("#overlap").css("top",859.562);break;
+				case "4FA5": $("#overlap").css("left",647.5);$("#overlap").css("top",859.562);break;
+				case "4FA6": $("#overlap").css("left",622.5);$("#overlap").css("top",859.562);break;
+				case "4FA7": $("#overlap").css("left",582.5);$("#overlap").css("top",859.562);break;
+				case "4FA8": $("#overlap").css("left",557.5);$("#overlap").css("top",859.562);break;
+				case "4FA9": $("#overlap").css("left",532.5);$("#overlap").css("top",859.562);break;
+				case "4FA10": $("#overlap").css("left",480.5);$("#overlap").css("top",859.562);break;
+				case "4FA11": $("#overlap").css("left",456.5);$("#overlap").css("top",859.562);break;
+				case "4FA12": $("#overlap").css("left",431.5);$("#overlap").css("top",859.562);break;
+				case "4FA13": $("#overlap").css("left",392.5);$("#overlap").css("top",859.562);break;
+				case "4FA14": $("#overlap").css("left",368.5);$("#overlap").css("top",859.562);break;
+				case "4FA15": $("#overlap").css("left",343.5);$("#overlap").css("top",859.562);break;
+				case "4FA16": $("#overlap").css("left",304.5);$("#overlap").css("top",859.562);break;
+				case "4FA17": $("#overlap").css("left",279.5);$("#overlap").css("top",859.562);break;
+				case "4FA18": $("#overlap").css("left",254.5);$("#overlap").css("top",859.562);break;
+				
+				case "4FB1": $("#overlap").css("left",759.5);$("#overlap").css("top",782.562);break;
+				case "4FB2": $("#overlap").css("left",734.5);$("#overlap").css("top",782.562);break;
+				case "4FB3": $("#overlap").css("left",710.5);$("#overlap").css("top",782.562);break;
+				case "4FB4": $("#overlap").css("left",671.5);$("#overlap").css("top",782.562);break;
+				case "4FB5": $("#overlap").css("left",647.5);$("#overlap").css("top",782.562);break;
+				case "4FB6": $("#overlap").css("left",622.5);$("#overlap").css("top",782.562);break;
+				case "4FB7": $("#overlap").css("left",582.5);$("#overlap").css("top",782.562);break;
+				case "4FB8": $("#overlap").css("left",557.5);$("#overlap").css("top",782.562);break;
+				case "4FB9": $("#overlap").css("left",532.5);$("#overlap").css("top",782.562);break;
+				case "4FB10": $("#overlap").css("left",480.5);$("#overlap").css("top",782.562);break;
+				case "4FB11": $("#overlap").css("left",456.5);$("#overlap").css("top",782.562);break;
+				case "4FB12": $("#overlap").css("left",431.5);$("#overlap").css("top",782.562);break;
+				case "4FB13": $("#overlap").css("left",392.5);$("#overlap").css("top",782.562);break;
+				case "4FB14": $("#overlap").css("left",368.5);$("#overlap").css("top",782.562);break;
+				case "4FB15": $("#overlap").css("left",343.5);$("#overlap").css("top",782.562);break;
+				case "4FB16": $("#overlap").css("left",303.5);$("#overlap").css("top",782.562);break;
+				case "4FB17": $("#overlap").css("left",279.5);$("#overlap").css("top",782.562);break;
+				case "4FB18": $("#overlap").css("left",254.5);$("#overlap").css("top",782.562);break;
+				 
+				case "4FC1": $("#overlap").css("left",759.5);$("#overlap").css("top",669.562);break;
+				case "4FC2": $("#overlap").css("left",734.5);$("#overlap").css("top",669.562);break;
+				case "4FC3": $("#overlap").css("left",710.5);$("#overlap").css("top",669.562);break;
+				case "4FC4": $("#overlap").css("left",671.5);$("#overlap").css("top",669.562);break;
+				case "4FC5": $("#overlap").css("left",647.5);$("#overlap").css("top",669.562);break;
+				case "4FC6": $("#overlap").css("left",622.5);$("#overlap").css("top",669.562);break;
+				case "4FC7": $("#overlap").css("left",582.5);$("#overlap").css("top",669.562);break;
+				case "4FC8": $("#overlap").css("left",557.5);$("#overlap").css("top",669.562);break;
+				case "4FC9": $("#overlap").css("left",532.5);$("#overlap").css("top",669.562);break;
+				case "4FC10": $("#overlap").css("left",480.5);$("#overlap").css("top",669.562);break;
+				case "4FC11": $("#overlap").css("left",456.5);$("#overlap").css("top",669.562);break;
+				case "4FC12": $("#overlap").css("left",431.5);$("#overlap").css("top",669.562);break;
+				case "4FC13": $("#overlap").css("left",392.5);$("#overlap").css("top",669.562);break;
+				case "4FC14": $("#overlap").css("left",368.5);$("#overlap").css("top",669.562);break;
+				case "4FC15": $("#overlap").css("left",343.5);$("#overlap").css("top",669.562);break;
+				case "4FC16": $("#overlap").css("left",303.5);$("#overlap").css("top",669.562);break;
+				case "4FC17": $("#overlap").css("left",279.5);$("#overlap").css("top",669.562);break;
+				case "4FC18": $("#overlap").css("left",254.5);$("#overlap").css("top",669.562);break;
+				
+				case "4FD1": $("#overlap").css("left",759.5);$("#overlap").css("top",591.562);break;
+				case "4FD2": $("#overlap").css("left",734.5);$("#overlap").css("top",591.562);break;
+				case "4FD3": $("#overlap").css("left",710.5);$("#overlap").css("top",591.562);break;
+				case "4FD4": $("#overlap").css("left",671.5);$("#overlap").css("top",591.562);break;
+				case "4FD5": $("#overlap").css("left",647.5);$("#overlap").css("top",591.562);break;
+				case "4FD6": $("#overlap").css("left",622.5);$("#overlap").css("top",591.562);break;
+				case "4FD7": $("#overlap").css("left",582.5);$("#overlap").css("top",591.562);break;
+				case "4FD8": $("#overlap").css("left",557.5);$("#overlap").css("top",591.562);break;
+				case "4FD9": $("#overlap").css("left",532.5);$("#overlap").css("top",591.562);break;
+				case "4FD10": $("#overlap").css("left",480.5);$("#overlap").css("top",591.562);break;
+				case "4FD11": $("#overlap").css("left",456.5);$("#overlap").css("top",591.562);break;
+				case "4FD12": $("#overlap").css("left",431.5);$("#overlap").css("top",591.562);break;
+				case "4FD13": $("#overlap").css("left",392.5);$("#overlap").css("top",591.562);break;
+				case "4FD14": $("#overlap").css("left",368.5);$("#overlap").css("top",591.562);break;
+				case "4FD15": $("#overlap").css("left",343.5);$("#overlap").css("top",591.562);break;
+				case "4FD16": $("#overlap").css("left",303.5);$("#overlap").css("top",591.562);break;
+				case "4FD17": $("#overlap").css("left",279.5);$("#overlap").css("top",591.562);break;
+				case "4FD18": $("#overlap").css("left",254.5);$("#overlap").css("top",591.562);break;
+				
+				case "4FE1": $("#overlap").css("left",759.5);$("#overlap").css("top",447.562);break;
+				case "4FE2": $("#overlap").css("left",734.5);$("#overlap").css("top",447.562);break;
+				case "4FE3": $("#overlap").css("left",709.5);$("#overlap").css("top",447.562);break;
+				case "4FE4": $("#overlap").css("left",670.5);$("#overlap").css("top",447.562);break;
+				case "4FE5": $("#overlap").css("left",646.5);$("#overlap").css("top",447.562);break;
+				case "4FE6": $("#overlap").css("left",621.5);$("#overlap").css("top",447.562);break;
+				case "4FE7": $("#overlap").css("left",581.5);$("#overlap").css("top",447.562);break;
+				case "4FE8": $("#overlap").css("left",556.5);$("#overlap").css("top",447.562);break;
+				case "4FE9": $("#overlap").css("left",532.5);$("#overlap").css("top",447.562);break;
+				case "4FE10": $("#overlap").css("left",495.5);$("#overlap").css("top",447.562);break;
+				case "4FE11": $("#overlap").css("left",471.5);$("#overlap").css("top",447.562);break;
+				case "4FE12": $("#overlap").css("left",446.5);$("#overlap").css("top",447.562);break;
+				case "4FE13": $("#overlap").css("left",408.5);$("#overlap").css("top",447.562);break;
+				case "4FE14": $("#overlap").css("left",383.5);$("#overlap").css("top",447.562);break;
+				case "4FE15": $("#overlap").css("left",358.5);$("#overlap").css("top",447.562);break;
+				case "4FE16": $("#overlap").css("left",319.5);$("#overlap").css("top",447.562);break;
+				case "4FE17": $("#overlap").css("left",294.5);$("#overlap").css("top",447.562);break;
+				case "4FE18": $("#overlap").css("left",270.5);$("#overlap").css("top",447.562);break;
+				case "4FE19": $("#overlap").css("left",230.5);$("#overlap").css("top",447.562);break;
+				case "4FE20": $("#overlap").css("left",205.5);$("#overlap").css("top",447.562);break;
+				case "4FE21": $("#overlap").css("left",181.5);$("#overlap").css("top",447.562);break;
+	  		}
+	  		$("#parking_area").html("<b>"+word1+word2+"</b>"+"&nbsp;&nbsp;"+word3+"-"+word4);
+	  		$("#main_space_floor1 b").html(word1+word2);
+			$("#main_space tr:nth-child(1) td:nth-child(2)").html(word3+"-"+word4);
+		}   
+	</script>
+	<body>
+		<header>
+			<table>
+				<tr>
+					<td><a href="../index.jsp">EZEN</a></td>
+					<td>주차 예약 서비스</td>	
+					<td><img src="../img/menu.png"></td>
+				</tr>
+			</table>
+		</header>
+		<img id="overlap">
+		<table id="main_img" >
+			<tr>
+				<td colspan="4">
+					<table id="main_space">
+						<tr >
+							<td rowspan="2" id="main_space_floor1"><b>1F</b></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td id="main_space_floor2">일반</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td id="img_case" colspan="4">
+					<img src="../img/parkingA.jpg" usemap="#image-map">
+					<map class="parking" name="image-map">
+					 	<area onclick="MainImage(4);" target="_self" alt="4floor" title="4floor" href="javascript:;" coords="1202,797,1120,828,1203,858,1283,828" shape="poly">
+					    <area onclick="MainImage(3);" target="_self" alt="3floor" title="3floor" href="javascript:;" coords="1158,842,1120,855,1202,883,1284,855,1248,842,1204,859" shape="poly">
+					    <area onclick="MainImage(2);" target="_self" alt="2floor" title="2floor" href="javascript:;" coords="1158,869,1202,884,1246,869,1285,882,1202,910,1119,882" shape="poly">
+					    <area onclick="MainImage(1);" target="_self" alt="1floor" title="1floor" href="javascript:;" coords="1158,897,1202,912,1248,895,1284,910,1202,940,1119,909" shape="poly">
+					    <area onclick="checked('1FA1')" target="_self" alt="A_1" title="A_1" href="javascript:;" coords="1095,677,1136,770" shape="rect" >
+					    <area onclick="checked('1FA2')" target="_self" alt="A_2" title="A_2" href="javascript:;" coords="1092,771,1053,676" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA3');" target="_self" alt="A_3" title="A_3" href="javascript:;" coords="1012,676,1051,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA4');" target="_self" alt="A_4" title="A_4" href="javascript:;" coords="949,677,989,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA3');" target="_self" alt="A_5" title="A_5" href="javascript:;" coords="909,677,946,769" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA6');" target="_self" alt="A_6" title="A_6" href="javascript:;" coords="869,675,908,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA7');" target="_self" alt="A_7" title="A_7" href="javascript:;" coords="803,677,844,771" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA8');" target="_self" alt="A_8" title="A_8" href="javascript:;" coords="761,680,800,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA9');" target="_self" alt="A_9" title="A_9" href="javascript:;" coords="724,677,759,771" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA10');" target="_self" alt="A_10" title="A_10" href="javascript:;" coords="637,676,676,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA11');" target="_self" alt="A_11" title="A_11" href="javascript:;" coords="597,676,634,771" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA12');" target="_self" alt="A_12" title="A_12" href="javascript:;" coords="556,679,595,771" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA13');" target="_self" alt="A_13" title="A_13" href="javascript:;" coords="491,676,531,773" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA14');" target="_self" alt="A_14" title="A_14" href="javascript:;" coords="451,677,488,771" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA15');" target="_self" alt="A_15" title="A_15" href="javascript:;" coords="411,677,447,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA16');" target="_self" alt="A_16" title="A_16" href="javascript:;" coords="345,677,386,770" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA17');" target="_self" alt="A_17" title="A_17" href="javascript:;" coords="306,677,342,769" shape="rect" id="volume_up">
+					    <area onclick="checked('1FA18');" target="_self" alt="A_18" title="A_18" href="javascript:;" coords="265,675,301,771" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB1');" target="_self" alt="B_1" title="B_1" href="javascript:;" coords="1093,549,1136,646" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB2');" target="_self" alt="B_2" title="B_2" href="javascript:;" coords="1053,549,1097,648" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB3');" target="_self" alt="B_3" title="B_3" href="javascript:;" coords="1012,550,1055,647" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB4');" target="_self" alt="B_4" title="B_4" href="javascript:;" coords="950,551,991,644" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB5');" target="_self" alt="B_5" title="B_5" href="javascript:;" coords="909,552,948,643" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB6');" target="_self" alt="B_6" title="B_6" href="javascript:;" coords="868,552,907,643" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB7');" target="_self" alt="B_7" title="B_7" href="javascript:;" coords="807,552,845,644" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB8');" target="_self" alt="B_8" title="B_8" href="javascript:;" coords="765,551,804,643" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB9');" target="_self" alt="B_9" title="B_9" href="javascript:;" coords="724,552,763,644" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB10');" target="_self" alt="B_10" title="B_10" href="javascript:;" coords="639,551,679,645" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB11');" target="_self" alt="B_11" title="B_11" href="javascript:;" coords="598,551,638,643" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB12');" target="_self" alt="B_12" title="B_12" href="javascript:;" coords="555,551,597,644" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB13');" target="_self" alt="B_13" title="B_13" href="javascript:;" coords="492,551,531,643" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB14');" target="_self" alt="B_14" title="B_14" href="javascript:;" coords="451,551,490,643" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB15');" target="_self" alt="B_15" title="B_15" href="javascript:;" coords="408,551,450,645" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB16');" target="_self" alt="B_16" title="B_16" href="javascript:;" coords="347,552,386,645" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB17');" target="_self" alt="B_17" title="B_17" href="javascript:;" coords="307,551,345,644" shape="rect" id="volume_up">
+					    <area onclick="checked('1FB18');" target="_self" alt="B_18" title="B_18" href="javascript:;" coords="265,551,305,645" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC1');" target="_self" alt="C_1" title="C_1" href="javascript:;" coords="1092,362,1135,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC2');" target="_self" alt="C_2" title="C_2" href="javascript:;" coords="1052,362,1094,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC3');" target="_self" alt="C_3" title="C_3" href="javascript:;" coords="1011,362,1054,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC4');" target="_self" alt="C_4" title="C_4" href="javascript:;" coords="949,360,992,458" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC5');" target="_self" alt="C_5" title="C_5" href="javascript:;" coords="907,360,950,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC6');" target="_self" alt="C_6" title="C_6" href="javascript:;" coords="866,361,908,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC7');" target="_self" alt="C_7" title="C_7" href="javascript:;" coords="800,362,846,460" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC8');" target="_self" alt="C_8" title="C_8" href="javascript:;" coords="760,362,804,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC9');" target="_self" alt="C_9" title="C_9" href="javascript:;" coords="719,362,764,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC10');" target="_self" alt="C_10" title="C_10" href="javascript:;" coords="634,362,679,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC11');" target="_self" alt="C_11" title="C_11" href="javascript:;" coords="594,362,637,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC12');" target="_self" alt="C_12" title="C_12" href="javascript:;" coords="552,362,596,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC13');" target="_self" alt="C_13" title="C_13" href="javascript:;" coords="489,361,535,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC14');" target="_self" alt="C_14" title="C_14" href="javascript:;" coords="449,362,493,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC15');" target="_self" alt="C_15" title="C_15" href="javascript:;" coords="409,363,455,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC16');" target="_self" alt="C_16" title="C_16" href="javascript:;" coords="343,363,388,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC17');" target="_self" alt="C_17" title="C_17" href="javascript:;" coords="303,363,345,460" shape="rect" id="volume_up">
+					    <area onclick="checked('1FC18');" target="_self" alt="C_18" title="C_18" href="javascript:;" coords="262,363,307,459" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD1');" target="_self" alt="D_1" title="D_1" href="javascript:;" coords="1093,236,1136,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD2');" target="_self" alt="D_2" title="D_2" href="javascript:;" coords="1053,237,1095,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD3');" target="_self" alt="D_3" title="D_3" href="javascript:;" coords="1012,237,1055,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD4');" target="_self" alt="D_4" title="D_4" href="javascript:;" coords="948,237,991,335" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD5');" target="_self" alt="D_5" title="D_5" href="javascript:;" coords="907,236,950,335" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD6');" target="_self" alt="D_6" title="D_6" href="javascript:;" coords="866,237,908,335" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD7');" target="_self" alt="D_7" title="D_7" href="javascript:;" coords="802,236,848,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD8');" target="_self" alt="D_8" title="D_8" href="javascript:;" coords="762,237,806,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD9');" target="_self" alt="D_9" title="D_9" href="javascript:;" coords="719,237,764,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD10');" target="_self" alt="D_10" title="D_10" href="javascript:;" coords="635,236,680,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD11');" target="_self" alt="D_11" title="D_11" href="javascript:;" coords="595,236,638,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD12');" target="_self" alt="D_12" title="D_12" href="javascript:;" coords="553,237,597,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD13');" target="_self" alt="D_13" title="D_13" href="javascript:;" coords="488,236,534,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD14');" target="_self" alt="D_14" title="D_14" href="javascript:;" coords="449,236,493,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD15');" target="_self" alt="D_15" title="D_15" href="javascript:;" coords="405,237,451,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD16');" target="_self" alt="D_16" title="D_16" href="javascript:;" coords="343,237,388,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD17');" target="_self" alt="D_17" title="D_17" href="javascript:;" coords="306,237,348,334" shape="rect" id="volume_up">
+					    <area onclick="checked('1FD18');" target="_self" alt="D_18" title="D_18" href="javascript:;" coords="263,237,308,333" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE1');" target="_self" alt="E_1" title="E_1" href="javascript:;" coords="1094,1,1137,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE2');" target="_self" alt="E_2" title="E_2" href="javascript:;" coords="1052,1,1094,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE3');" target="_self" alt="E_3" title="E_3" href="javascript:;" coords="1010,1,1053,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE4');" target="_self" alt="E_4" title="E_4" href="javascript:;" coords="947,0,990,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE5');" target="_self" alt="E_5" title="E_5" href="javascript:;" coords="906,0,949,99" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE6');" target="_self" alt="E_6" title="E_6" href="javascript:;" coords="864,0,906,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE7');" target="_self" alt="E_7" title="E_7" href="javascript:;" coords="801,0,847,98" shape="rect" id="volume_up" >
+					    <area onclick="checked('1FE8');" target="_self" alt="E_8" title="E_8" href="javascript:;" coords="761,1,805,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE9');" target="_self" alt="E_9" title="E_9" href="javascript:;" coords="719,1,764,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE10');" target="_self" alt="E_10" title="E_10" href="javascript:;" coords="658,1,703,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE11');" target="_self" alt="E_11" title="E_11" href="javascript:;" coords="619,1,662,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE12');" target="_self" alt="E_12" title="E_12" href="javascript:;" coords="577,1,621,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE13');" target="_self" alt="E_13" title="E_13" href="javascript:;" coords="511,0,557,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE14');" target="_self" alt="E_14" title="E_14" href="javascript:;" coords="471,1,515,98" shape="rect" id="volume_up" >
+					    <area onclick="checked('1FE15');" target="_self" alt="E_15" title="E_15" href="javascript:;" coords="430,2,476,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE16');" target="_self" alt="E_16" title="E_16" href="javascript:;" coords="368,2,413,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE17');" target="_self" alt="E_17" title="E_17" href="javascript:;" coords="328,1,370,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE18');" target="_self" alt="E_18" title="E_18" href="javascript:;" coords="287,2,332,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE19');" target="_self" alt="E_19" title="E_19" href="javascript:;" coords="223,0,265,98" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE20');" target="_self" alt="E_20" title="E_20" href="javascript:;" coords="183,1,222,99" shape="rect" id="volume_up">
+					    <area onclick="checked('1FE21');" target="_self" alt="E_21" title="E_21" href="javascript:;" coords="140,0,181,99" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF1');" target="_self" alt="F-1" title="F-1" href="javascript:;" coords="0,124,98,169" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF2');" target="_self" alt="F-2" title="F-2" href="javascript:;" coords="0,167,97,209" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF3');" target="_self" alt="F-3" title="F-3" href="javascript:;" coords="0,208,98,249" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF4');" target="_self" alt="F-4" title="F-4" href="javascript:;" coords="0,268,97,311" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF5');" target="_self" alt="F-5" title="F-5" href="javascript:;" coords="0,309,98,351" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF6');" target="_self" alt="F-6" title="F-6" href="javascript:;" coords="0,349,99,393" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF7');" target="_self" alt="F-7" title="F-7" href="javascript:;" coords="0,412,98,457" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF8');" target="_self" alt="F-8" title="F-8" href="javascript:;" coords="0,457,99,497" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF9');" target="_self" alt="F-9" title="F-9" href="javascript:;" coords="0,497,98,538" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF10');" target="_self" alt="F-10" title="F-10" href="javascript:;" coords="0,557,98,602" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF11');" target="_self" alt="F-11" title="F-11" href="javascript:;" coords="0,601,98,643" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF12');" target="_self" alt="F-12" title="F-12" href="javascript:;" coords="0,642,98,682" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF13');" target="_self" alt="F-13" title="F-13" href="javascript:;" coords="0,703,98,749" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF14');" target="_self" alt="F-14" title="F-14" href="javascript:;" coords="0,748,98,788" shape="rect" id="volume_up">
+					    <area onclick="checked2('1FF15');" target="_self" alt="F-15" title="F-15" href="javascript:;" coords="0,787,99,828" shape="rect" id="volume_up">
+					</map>
+				</td>
+			</tr>
+			<tr id="ticket">
+				<td colspan="4">
+					<div>
+						<table>
+							<tr>
+								<td id="parking_title">
+									<p>주차장 예약<p>
+								</td>
+							</tr>
+							<tr>
+								<td id="parking_area">
+									<b>주차공간을 지정해주세요</b> 
+								</td>
+							</tr>
+							<tr>
+								<td id="parking_date">
+									주차날짜:
+								</td>
+							</tr>
+							<tr>
+								<td id="parking_time">
+									주차시간:
+								</td>
+							</tr>
+							<tr>
+								<td id="parking_injery_time">
+									유예시간:
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="button" value="예약">
+								</td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<footer>
+			<table id="footer_button">
+				<tr>
+					<td><img src="../img/left.jpg"></td>
+					<td><img src="../img/middle.jpg"></td>
+					<td><img src="../img/right.jpg"></td>
+				</tr>
+			</table>
+		</footer>
+	</body>
+</html>
